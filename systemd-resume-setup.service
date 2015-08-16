@@ -1,0 +1,13 @@
+[Unit]
+Description=Setup Resume Device
+DefaultDependencies=no
+Conflicts=shutdown.target
+After=sysinit.target
+Before=basic.target shutdown.target
+ConditionKernelCommandLine=resume
+ConditionPathIsReadWrite=/sys
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/lib/systemd/scripts/resume-setup
